@@ -1,0 +1,40 @@
+@import 'variables';
+
+.event-dialog-container {
+  padding: 1rem;
+}
+
+.inputs-container {
+  display: flex;
+  gap: 1rem;
+  margin-block: 2rem;
+}
+
+.form-control {
+  label {
+    color: $indigo;
+  }
+  select {
+    border: 2px solid $indigo;
+    width: 100%;
+    color: $indigo;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.create-event-button {
+  font-size: 1.25rem;
+  background-image: linear-gradient(
+    to right,
+    $orange, $indigo
+  );
+  &:hover {
+    color: $white;
+  }
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+}

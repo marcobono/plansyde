@@ -1,0 +1,87 @@
+@import "variables";
+
+$account-spacing: 2rem;
+
+.account {
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-block-end:$navbar-spacing;
+  }
+  &-card {
+    color: $white;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      $orange, $indigo
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: $radius-std;
+  
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  .form-control {
+    position: relative;
+    max-width: min-content;
+    align-items: center;
+    label {
+      align-self: flex-start;
+    }
+  }
+}
+
+.buttons-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+  button {
+    max-width: 35%;
+  }
+}
+
+img.error {
+  position: absolute;
+  width: 50px;
+  aspect-ratio: 1;
+  inset-block: 30%;
+  inset-inline-end: 0;
+}
+span.error {
+  text-align: center;
+}
+
+.numbers {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  .groups, .friends {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  img {
+    width: 50px;
+    aspect-ratio: 1;
+  }
+}

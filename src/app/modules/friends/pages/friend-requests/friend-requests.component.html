@@ -1,0 +1,20 @@
+<ng-container *ngIf="data.requests">
+  <section class="requests-container">
+    <div class="close">
+      <span (click)="closeDialog()">Chiudi</span>
+    </div>
+    <div class="request-card" *ngFor="let request of data.requests">
+      <div class="info">
+        <h2>{{request.sender_profile.username}}</h2>
+        <span>{{request.sender_profile.full_name}}</span>
+      </div>
+      <div class="buttons">
+        <img src="assets/icons/friend-deny.svg" 
+        (click)="updateFriendRequest(request.request_id, 'rejected')">
+
+        <img src="assets/icons/friend-accept.svg" 
+        (click)="updateFriendRequest(request.request_id, 'accepted')">
+      </div>
+    </div>
+  </section>
+</ng-container>

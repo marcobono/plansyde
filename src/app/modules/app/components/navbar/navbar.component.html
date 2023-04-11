@@ -1,0 +1,27 @@
+<section class="navbar-container">
+
+  <img #rla="routerLinkActive" 
+    routerLinkActive="active" 
+    routerLink="account" 
+    [src]="rla.isActive 
+      ? 'assets/icons/profile-circle-orange.svg'
+      : 'assets/icons/profile-circle-indigo.svg'">
+  <img #rlaEvents="routerLinkActive"  
+    routerLinkActive="active" 
+    routerLink="events" 
+    [src]="rlaEvents.isActive 
+      ? 'assets/icons/events-circle-orange.svg'
+      : 'assets/icons/events-circle-indigo.svg'">
+  <img #rlaGroups="routerLinkActive"  
+    routerLinkActive="active" 
+    routerLink="groups" 
+    [src]="rlaGroups.isActive 
+      ? 'assets/icons/groups-circle-orange.svg'
+      : 'assets/icons/groups-circle-indigo.svg'">
+  <img #rlaFriends="routerLinkActive"  
+    routerLinkActive="active"
+    routerLink="friends" 
+    [src]="rlaFriends.isActive 
+      ? 'assets/icons/friends-circle-orange.svg'
+      : 'assets/icons/friends-circle-indigo.svg'">
+</section>

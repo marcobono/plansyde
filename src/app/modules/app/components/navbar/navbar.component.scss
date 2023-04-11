@@ -1,0 +1,30 @@
+@import 'variables';
+
+.navbar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  background-color: $white;
+  height: $navbar-height;
+  width: 100vw;
+  border-top-left-radius: $radius-std;
+  border-top-right-radius: $radius-std;
+
+  background: linear-gradient($white, $white) padding-box,
+  linear-gradient(to right, $orange, $indigo) border-box;
+  border: 4px solid transparent;
+  border-inline: 0;
+  border-block-end: 0;
+
+  img {
+    @extend .transition-std;
+    width: 50px;
+    aspect-ratio: 1;
+    &.active {
+      scale: 1.4;
+    }
+  }
+}

@@ -1,0 +1,129 @@
+/* Material themes */
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+@include mat-core();
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+@import "palettes";
+// Define the theme.
+$my-primary: mat.define-palette($orange-palette);
+$my-accent: mat.define-palette($indigo-palette, 200, 100, 400);
+$my-light-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent
+  ),
+  density: 0
+));
+
+$my-dark-theme: mat.define-dark-theme((
+ color: (
+   primary: mat.define-palette(mat.$orange-palette),
+   accent: mat.define-palette(mat.$indigo-palette, 700, 400, 900),
+ ),
+  density: 0,
+));
+
+// Apply the theme to your/all components
+@include mat.all-component-themes($my-light-theme);
+// Apply the light theme only when the user prefers light themes.
+@media (prefers-color-scheme: dark) {
+  // Use the `-color` mixins to only apply color styles without reapplying the same
+  // typography and density styles.
+  @include mat.core-color($my-dark-theme);
+  @include mat.button-color($my-dark-theme);
+}
+
+/* App styles ------------------------------------------------------------------------------------------*/
+@import "variables";
+
+* {
+  font-family: Comfortaa, poppins;
+}
+
+body {
+  background-color: #fff;
+}
+
+.form-control{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  input,
+  select {
+    outline: none;
+    border: none;
+    border-radius: $radius-std;
+    padding: $form-control-padding;
+  }
+  textarea {
+    outline: none;
+    border: none;
+    border-radius: $radius-std;
+    padding: $form-control-padding;
+    height: 5rem;
+    resize: none;
+  }
+  label {
+    position: relative;
+    inset-inline-start: $form-control-padding;
+    color: $white;
+  }
+}
+
+button {
+  cursor: pointer;
+  color: $white;
+  outline: none;
+  border: 2px solid $white;
+  border-radius: $radius-std;
+  padding: $form-control-padding;
+  background-color: transparent;
+  width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+  @extend .transition-std;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &:hover:not(:disabled) {
+    background-color: $white;
+    color: $indigo;
+  }
+}
+
+.empty-container {
+  @extend .navbar-margin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    text-align: center;
+  }
+  div.plan-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+    img {
+      width: 50px;
+      aspect-ratio: 1;
+    }
+  }
+  span.emoji {
+    font-size: 60px;
+  }
+}
+
+mat-spinner {
+  position: absolute;
+  top: calc(50vh - ($spinner-size/2) - $navbar-spacing);
+  left: calc(50vw - $spinner-size/2);
+}

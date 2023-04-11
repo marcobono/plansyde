@@ -1,0 +1,45 @@
+<section class="friend-details-container">
+  <div class="friend-details-card">
+
+    <div class="close">
+      <span (click)="closeDialog()">Chiudi</span>
+    </div>
+
+    <h1>Il profilo di {{data.friend.username}}</h1>
+    <h2 *ngIf="data.friend.full_name">({{data.friend.full_name}})</h2>
+    <div class="info">
+  
+      <app-avatar
+        [avatarUrl]="data.friend.avatar_url"
+        [hideUpload]="true">
+      </app-avatar>
+  
+      <div class="numbers">
+        <div class="friends" *ngIf="data.friend.num_friends">
+          <img src="assets/icons/heart.svg"> 
+          {{data.friend.num_friends}}
+          {{data.friend.num_friends! > 1 
+            ? ' amici'
+            : ' amico'}}
+        </div>
+
+        <div class="groups" *ngIf="data.friend.num_groups">
+          <img src="assets/icons/group.svg"> 
+          {{data.friend.num_groups}}
+          {{data.friend.num_groups! > 1 
+            ? ' gruppi'
+            : ' gruppo'}}
+        </div>
+      </div>
+    </div>
+
+    <button class="delete" 
+      (click)="deleteConfirm 
+        ? deleteFriend() 
+        : setDeleteConfirm()">
+      {{ deleteConfirm 
+        ? 'Sei sicuro?'
+        : 'Rimuovi dagli amici'}}
+    </button>
+  </div>
+</section>

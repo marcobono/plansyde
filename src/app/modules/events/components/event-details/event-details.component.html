@@ -1,0 +1,67 @@
+<section class="event-container" *ngIf="data.event">
+  <div class="close">
+    <span (click)="closeDialog()">Chiudi</span>
+  </div>
+  <h1>{{data.event.name}}</h1>
+  <h2>{{data.event.start | date:'dd/MM HH:mm'}}</h2>
+  <div class="description" *ngIf="data.event.description">
+    {{data.event.description}}
+  </div>
+
+  <div class="buttons">
+    <div *ngIf="isUserParticipating && userParticipationStatus" class="status">
+      Tu 
+      <span class="colored" [ngClass]="userParticipationStatus">
+        {{userParticipationStatus === 'yes' 
+          ? 'SARAI'
+          : 'NON SARAI'}} presente
+      </span> 
+    </div>
+    <span>{{
+      isUserParticipating 
+        ? 'Cambio di piani?' 
+        : 'Vuoi unirti?'
+      }}</span>
+    <div class="icons">
+      <img src="assets/icons/event-deny.svg" 
+        [ngClass]="{'disabled': userParticipationStatus === 'no'}"
+        (click)="addParticipation('no')">
+      <img src="assets/icons/event-accept.svg"
+        [ngClass]="{'disabled': userParticipationStatus === 'yes'}"
+        (click)="addParticipation('yes')">
+    </div>
+  </div>
+
+  <div class="participants yes" *ngIf="participants.length">
+    <div class="title">
+      <img src="assets/icons/check-badge.svg" >
+      <div class="label">
+        Persone che hanno confermato
+      </div>
+      <div class="number">
+        {{participants.length}}
+      </div>
+    </div>
+    <!-- <div *ngFor="let participant of participants" class="participant-card">
+      <h2>{{participant.username}}</h2>
+      <span class="light">({{participant.full_name}})</span>
+    </div> -->
+  </div>
+
+  <div class="participants no" *ngIf="nonParticipants.length">
+    <div class="title">
+      <img src="assets/icons/cross-round.svg" >
+      <div class="label">
+        Persone che hanno rifiutato
+      </div>
+      <div class="number">
+        {{nonParticipants.length}}
+      </div>
+    </div>
+    <!-- <div *ngFor="let participant of nonParticipants" class="participant-card">
+      <h2>{{participant.username}}</h2>
+      <span class="light">({{participant.full_name}})</span>
+    </div> -->
+  </div>
+
+</section>

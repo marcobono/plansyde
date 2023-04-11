@@ -1,0 +1,66 @@
+<section class="account-container">
+  <div class="account-card">
+    <h1>Il tuo profilo</h1>
+    <form 
+      [formGroup]="form" 
+      (ngSubmit)="updateProfile()" 
+      class="form-widget">
+  
+      <app-avatar
+        [avatarUrl]="this.avatarUrl" 
+        (upload)="updateAvatar($event)">
+      </app-avatar>
+
+      <div class="numbers" *ngIf="profile">
+        <div class="friends" *ngIf="profile.num_friends">
+          <img src="assets/icons/heart.svg"> 
+          {{profile.num_friends}}
+          {{profile.num_friends! > 1 
+            ? ' amici'
+            : ' amico'}}
+        </div>
+
+        <div class="groups" *ngIf="profile.num_groups">
+          <img src="assets/icons/group.svg"> 
+          {{profile.num_groups}}
+          {{profile.num_groups! > 1 
+            ? ' gruppi'
+            : ' gruppo'}}
+        </div>
+      </div>
+  
+      <div class="controls-container">
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input id="email" type="email" [value]="user.email" disabled />
+        </div>
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input 
+            formControlName="username" id="username" type="text"
+            [maxlength]="maxUsernameLength"
+            [minlength]="minUsernameLength"
+          />
+          <img src="assets/icons/warning.svg" class="error"
+            *ngIf="hasPatternError('username')">
+        </div>
+        <span class="error" *ngIf="hasPatternError('username')">
+          Lo username può contenere solo lettere (minuscole), numeri e i simboli . e _
+        </span>
+        <div class="form-control">
+          <label for="full-name">Nome e cognome</label>
+          <input formControlName="full_name" id="full-name" type="text" 
+            [maxlength]="maxUsernameLength"/>
+        </div>
+      </div>
+    
+      <div class="buttons-container">
+        <button type="submit" class="button primary block" [disabled]="loading || !form.valid">
+          {{ loading ? 'Caricamento ...' : 'Aggiorna' }}
+        </button>
+        <button class="button block" (click)="signOut()">Esci</button>
+      </div>
+    
+    </form>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<ng-container *ngIf="data.friends">
+  <section class="invite-friends-container">
+    <div class="close">
+      <span (click)="closeDialog()">Close</span>
+    </div>
+    <div class="friend-card" *ngFor="let friend of data.friends">
+      <div class="start">
+        <app-avatar
+          [avatarUrl]="friend.avatar_url"
+          [hideUpload]="true">
+        </app-avatar>
+        <div class="info">
+          <h2>{{friend.username}}</h2>
+          <span>{{friend.full_name}}</span>
+        </div>
+      </div>
+      <img [src]="friend.selected
+        ? 'assets/icons/check-badge.svg'
+        : 'assets/icons/plus-square.svg'"
+        (click)="friend.selected = !friend.selected">
+    </div>
+    <button class="invite-button"
+      (click)="inviteSelectedFriends()"
+      [disabled]="noFriendSelected()">
+      Invita selezionati
+    </button>
+  </section>
+</ng-container>

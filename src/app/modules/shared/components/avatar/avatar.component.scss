@@ -1,0 +1,31 @@
+@import "variables";
+
+.avatar {
+  &-container {
+    position: relative;
+  }
+  clip-path: circle();
+  max-width: 200px;
+  aspect-ratio: 1;
+}
+
+.upload-container {
+  aspect-ratio: 1;
+  position: absolute;
+  overflow: hidden;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  width: 50px;
+  background-color: $white;
+  border-radius: 50%;
+  background-image: url('../../../../../assets/icons/edit.svg');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  label {
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    aspect-ratio: 1;
+  }
+}

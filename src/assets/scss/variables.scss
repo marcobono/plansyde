@@ -1,0 +1,26 @@
+$white: #F8F8FC;
+$black: #090D14;
+$orange: #FBAB57;
+$indigo: #8B8DAE;
+
+$green: #6CAE75;
+$red: #B80C09;
+
+$navbar-height: 90px;
+$navbar-spacing: calc($navbar-height + 1rem);
+
+$setting-height: 60px;
+$setting-spacing: calc($setting-height + 1rem);
+
+$spinner-size: 100px;
+
+$radius-std: 2rem;
+$form-control-padding: 1rem;
+
+.transition-std {
+  transition: all 0.25s linear;;
+}
+
+.navbar-margin {
+  margin-block-end: $navbar-spacing;
+}

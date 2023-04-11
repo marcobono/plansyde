@@ -1,0 +1,24 @@
+<section class="login-container">
+  
+  <div class="login-card">
+      <h1 class="header">Benvenuto in PlanSyde 🎉</h1>
+      <p class="description">Iscriviti e accedi solo con la tua mail</p>
+      <p class="description light">Una volta ricevuto il link magico, potrai accedere con un click</p>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-widget">
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            formControlName="email"
+            class="inputField"
+            type="email"
+            placeholder="john.doe@gmail.com"
+          />
+        </div>
+          <button type="submit" class="send" [disabled]="loading || !form.valid">
+            {{ loading ? 'Caricamento...' : 'Invia link magico' }}
+          </button>
+      </form>
+  </div>
+
+</section>

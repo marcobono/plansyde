@@ -1,0 +1,73 @@
+
+<section class="groups-container">
+  <div class="new-group-card">
+    <div class="title">
+      <h2>Crea nuovo gruppo</h2>
+      <img 
+        (click)="showForm = !showForm"
+        [src]="showForm 
+          ? 'assets/icons/remove-circle.svg'
+          : 'assets/icons/add-circle.svg'" 
+        [alt]="showForm ? '-' : '+'">
+    </div>
+    <form *ngIf="showForm"
+      [formGroup]="form" 
+      (ngSubmit)="createGroup()">
+      <div class="form-control">
+        <label for="name">Nome:</label>
+        <input [maxlength]="nameControlMaxLenght" type="text" id="name" formControlName="name">
+      </div>
+      <div class="form-control">
+        <label for="description">Descrizione:</label>
+        <textarea [maxlength]="descriptionControlMaxLenght" id="description" formControlName="description"></textarea>
+      </div>
+      <button type="submit" [disabled]="!form.valid">Crea gruppo</button>
+    </form>
+  </div>  
+</section>
+
+<section class="invitations" *ngIf="invitations && invitations.length">
+  <div class="invitations-card" 
+    (click)="openDialog()">
+    Hai ricevuto un invito a un gruppo!
+    <div class="notif-circle">{{invitations.length}}</div>
+  </div>
+</section>
+
+<ng-container *ngIf="loading; else groupsLayout">
+  <mat-spinner></mat-spinner>
+</ng-container>
+
+<ng-template #groupsLayout>
+  <section class="groups" *ngIf="groups && groups.length; else noGroups">
+    <h1>
+      I tuoi gruppi:
+    </h1>
+    <div class="group-card" *ngFor="let group of groups; index as i">
+      <div class="info">
+        <h2>{{group.name}}</h2>
+      </div>
+      <img
+        (click)="goToGroupDetail(group.id)"
+        [src]="i%2 == 0
+          ? 'assets/icons/arrow-right-indigo.svg'
+          : 'assets/icons/arrow-right-orange.svg'">
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #noGroups>
+  <div class="empty-container">
+    <span class="emoji">
+      😿
+    </span>
+    <h1>
+      Non sei in nessun gruppo.
+    </h1>
+    <div class="plan-label">
+      Creane uno e invita i tuoi amici!
+      <img src="assets/icons/arrow-right-orange.svg"
+      (click)="showForm = true">
+    </div>
+  </div>
+</ng-template>

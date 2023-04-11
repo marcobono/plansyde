@@ -1,0 +1,21 @@
+<div class="avatar-container">
+  <img
+    [src]="_avatarUrl || 'assets/images/profile-placeholder.png'"
+    alt="Avatar"
+    class="avatar image"
+  />
+  <ng-container *ngIf="!hideUpload">
+    <div class="upload-container">
+      <label for="single">
+      </label>
+      <input
+        style="visibility: hidden;position: absolute"
+        type="file"
+        id="single"
+        accept="image/*"
+        (change)="uploadAvatar($event)"
+        [disabled]="uploading"
+      />
+    </div>
+  </ng-container>
+</div>

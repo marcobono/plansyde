@@ -1,0 +1,65 @@
+@import 'variables';
+
+.close {
+  color: $white;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.friend-details {
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-card {
+    color: $white;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      $orange, $indigo
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+    h1 {
+      margin: 0;
+    }
+    h2 {
+      font-weight: 200;
+      margin: 0;
+    }
+  
+    div.info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .numbers {
+      font-size: 1.5rem;
+      .groups, .friends {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      img {
+        width: 50px;
+        aspect-ratio: 1;
+      }
+    }
+  }
+}
+
+button.delete {
+  margin-block-start: 1rem;
+  color: $white;
+  border-color: $white;
+  &:hover {
+    background-color: transparent;
+  }
+}

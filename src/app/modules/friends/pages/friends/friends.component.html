@@ -1,0 +1,76 @@
+<section class="friends-container">
+  <div class="add-friend-card">
+    <div class="title">
+      <h2>Aggiungi un amico</h2>
+      <img 
+        (click)="showForm = !showForm"
+        [src]="showForm 
+          ? 'assets/icons/remove-circle.svg'
+          : 'assets/icons/add-circle.svg'" 
+        [alt]="showForm ? '-' : '+'">
+    </div>
+    <form *ngIf="showForm"
+      [formGroup]="form" 
+      (ngSubmit)="sendFriendRequest()">
+      <div class="form-control">
+        <label for="username">Username:</label>
+        <input type="text" id="username" formControlName="username"
+          [maxlength]="maxUsernameLength">
+      </div>
+      <button type="submit" [disabled]="!form.valid">Invia richiesta</button>
+    </form>
+  </div>
+</section>
+
+<section class="requests" *ngIf="requests && requests.length">
+  <div class="requests-card" 
+    (click)="openDialog()">
+    Hai ricevuto una richiesta di amicizia!
+    <div class="notif-circle">{{requests.length}}</div>
+  </div>
+</section>
+
+<ng-container *ngIf="loading; else friendsLayout">
+  <mat-spinner></mat-spinner>
+</ng-container>
+
+<ng-template #friendsLayout>
+  <section class="friends" *ngIf="friends && friends.length; else noFriends">
+    <h1>
+      I tuoi amici:
+    </h1>
+    <div *ngFor="let friend of friends; index as i" class="friend-card">
+      <div class="card-start">
+        <app-avatar
+          [avatarUrl]="friend.avatar_url"
+          [hideUpload]="true">
+        </app-avatar>
+        <div class="info">
+          <h2>{{friend.username}}</h2>
+          <span>{{friend.full_name}}</span>
+        </div>
+      </div>
+      <img (click)="openFriendDetail(friend)"
+        [src]="i%2 == 0
+          ? 'assets/icons/friend-detail-indigo.svg'
+          : 'assets/icons/friend-detail-orange.svg'" >
+    </div>
+  </section>
+</ng-template>
+
+
+<ng-template #noFriends>
+  <div class="empty-container">
+    <span class="emoji">
+      😿
+    </span>
+    <h1>
+      Non hai ancora nessun amico.
+    </h1>
+    <div class="plan-label">
+      Non preoccuparti, aggiungerli è facile!
+      <img src="assets/icons/arrow-right-orange.svg"
+      (click)="showForm = true">
+    </div>
+  </div>
+</ng-template>

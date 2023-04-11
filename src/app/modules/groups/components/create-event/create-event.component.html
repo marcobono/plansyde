@@ -1,0 +1,40 @@
+<section class="event-dialog-container">
+  
+  <div class="close">
+    <span (click)="closeDialog()">Chiudi</span>
+  </div>
+  
+  <mat-calendar
+    [minDate]="minDate"
+    [(selected)]="selected">
+  </mat-calendar>
+  
+  <form [formGroup]="form">
+    <div class="inputs-container">
+      <div class="form-control">
+        <label for="hours">Ore</label>
+        <select formControlName="hours" id="hours">
+          <option [value]="hour" *ngFor="let hour of hoursOptions">
+            {{hour | number:'2.0-0'}}
+          </option>
+        </select>
+      </div>
+    
+      <div class="form-control">
+        <label for="minutes">Minuti</label>
+        <select formControlName="minutes" id="minutes">
+          <option [value]="minute" *ngFor="let minute of minutesOptions">
+            {{minute | number:'2.0-0'}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+  
+  <button class="create-event-button"
+    (click)="createEvent()"
+    [disabled]="!form.valid">
+    Conferma
+  </button>
+
+</section>

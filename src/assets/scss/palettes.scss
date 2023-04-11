@@ -1,0 +1,51 @@
+@import "variables";
+
+$indigo-palette: (
+  50: #eaebf1,
+  100: #cbcddd,
+  200: #abadc6,
+  300: #8b8dae,
+  400: #73739d,
+  500: #5d5a94,
+  600: #56528b,
+  700: #4d487f,
+  800: #453f74,
+  900: #362d61,
+  contrast: (
+    50: rgba($black, 0.87),
+    100: rgba($black, 0.87),
+    200: rgba($black, 0.87),
+    300: $white,
+    400: $white,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+  )
+);
+
+$orange-palette: (
+  50: #fef3e5,
+  100: #fee1be,
+  200: #fdce95,
+  300: #fcba6f,
+  400: #fbac57,
+  500: #f99f4c,
+  600: #f39448,
+  700: #eb8644,
+  800: #e37940,
+  900: #d86338,
+  contrast: (
+    50: rgba($black, 0.87),
+    100: rgba($black, 0.87),
+    200: rgba($black, 0.87),
+    300: $white,
+    400: $white,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+  )
+)

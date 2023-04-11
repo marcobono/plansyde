@@ -1,0 +1,31 @@
+<section class="group-settings-container">
+  <div class="close">
+    <span (click)="closeDialog()">Chiudi</span>
+  </div>
+  <h1 class="title">
+    {{data.groupInfo.name}}
+  </h1>
+  <div class="description">
+    {{data.groupInfo.description}}
+  </div>
+  <div class="info">
+    <div class="members">
+      <img src="assets/icons/members.svg">
+      {{
+        data.members.length > 1 
+          ? data.members.length + ' membri'
+          : 'Solo tu 😿'
+      }}
+    </div>
+    Creato il {{data.groupInfo.created_at | date}}
+  </div>
+
+  <button class="leave"
+    (click)="abandonConfirm 
+      ? leaveGroup() 
+      : setAbandonConfirm()">
+    {{ abandonConfirm 
+      ? 'Sei sicuro?'
+      : 'Abbandona'}}
+  </button>
+</section>
